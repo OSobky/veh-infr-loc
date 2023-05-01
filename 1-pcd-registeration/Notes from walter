@@ -1,0 +1,21 @@
+Steps for registeration:
+    - ids for lidars
+        - intersection is s110
+        - highway is s40 and s50 (no data availabe for it)
+    - local_terimal ws is ofr working locally 
+        - ll src
+        - build ws with catkinmk
+        - sourvce the envorment
+        - also there is python env. you will find the req.txt
+        - change frame_id os_sensor
+        - not important but to register three pcd 
+            - use register_and_merge_ros_point_clouds
+            _ or register_and_merge_pcd_point_clouds
+        - registeration:
+            - get intital transforamtion matrix ==> good results
+            - cont. registeration (ICP)
+            - inliner rsme
+            -another method
+             - is to estimate the intial trans matrix. 
+                - it needs source, target, and voxel size (default is 2)
+        - Calcuate Transformation matrix file is importent 
