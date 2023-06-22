@@ -1,0 +1,3 @@
+python change-to-kitti-format.py  --rot /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/rotation \
+                            --trans /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/translation \
+                            --output /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/veh-infra-gt.txt
