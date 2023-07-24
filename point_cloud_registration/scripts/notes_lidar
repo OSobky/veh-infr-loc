@@ -1,0 +1,11 @@
+Frames:
+    - 500 Frames
+Start OverLapping: 
+    - From frame 0 to frame 500
+
+Moving frames:
+    - From frame 0 to frame 
+    - From frame 420 to frame 500
+
+Stationary car:
+    - From frame  to 419

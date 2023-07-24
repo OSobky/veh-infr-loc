@@ -1,0 +1,10 @@
+message_filters==1.15.11
+open3d==0.16.0
+pyquaternion==0.9.9
+numpy==1.21.2
+sensor_msgs==1.13.1
+torch==1.8.1+cu111
+rospy==1.15.11
+rospkg==1.4.0
+pyquaternion==0.9.9
+pyproj==3.3.0

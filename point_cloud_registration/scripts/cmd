@@ -1,0 +1,28 @@
+python point_cloud_registration_pcd.py \
+--folder_path_point_cloud_source /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/matched \
+--folder_path_point_cloud_target /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/matched \
+--folder_path_gps_data /home/osobky/Documents/Master/Data/01_scene_01_omar/03_gps/04_gps_position_drive/json/matched \
+--folder_path_imu_data /home/osobky/Documents/Master/Data/01_scene_01_omar/04_imu/04_imu_rotations_drive/json/matched \
+--publish_registered_point_clouds \
+--save_transformed_point_clouds \ 
+--output_folder_path_transformed_source_point_clouds /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/transformed \ 
+--output_folder_path_transformed_target_point_clouds /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/transformed
+
+
+python point_cloud_registration_pcd_omar.py \
+--folder_path_point_cloud_source /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/transformed \
+--folder_path_point_cloud_target /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/transformed \
+--folder_path_translation_data /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/translation/ \
+--folder_path_rotation_data /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/rotation/ \
+--publish_registered_point_clouds \
+--save_registered_point_clouds \
+--output_folder_path_registered_point_clouds /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/output
+
+
+python point_cloud_registration_pcd_omar.py 
+--folder_path_point_cloud_source /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/transformed 
+--folder_path_point_cloud_target /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/transformed 
+--folder_path_translation_data /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/translation/ 
+--folder_path_rotation_data /home/osobky/Documents/Master/Data/01_scene_01_omar/01_lidar/tf_matrix/rotation/ 
+--publish_registered_point_clouds 
+

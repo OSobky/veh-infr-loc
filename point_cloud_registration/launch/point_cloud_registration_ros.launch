@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- Launch file for point cloud registration node -->
+
+<!--
+
+Example:
+
+roslaunch point_cloud_registration.launch"
+
+-->
+
+<launch>
+    <arg name="source_point_cloud" default="/s110/lidar/valeo/north_west/points"/>
+    <arg name="target_point_cloud" default="/s110/lidar/ouster/south/points"/>
+    <arg name="init_voxel_size" default="2"/>
+    <arg name="continuous_voxel_size" default="2"/>
+    <arg name="ros_output_topic_registered_point_cloud" default="/s110/lidars/registered/points"/>
+
+    <node pkg="point_cloud_registration" type="point_cloud_registration_ros.py" name="point_cloud_registration" output="screen">
+        <param name="source_point_cloud" value="$(arg source_point_cloud)"/>
+        <param name="target_point_cloud" value="$(arg target_point_cloud)"/>
+        <param name="init_voxel_size" value="$(arg init_voxel_size)"/>
+        <param name="continuous_voxel_size" value="$(arg continuous_voxel_size)"/>
+        <param name="ros_output_topic_registered_point_cloud" value="$(arg ros_output_topic_registered_point_cloud)"/>
+    </node>
+</launch>

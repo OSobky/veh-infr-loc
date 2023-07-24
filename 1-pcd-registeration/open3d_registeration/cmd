@@ -25,3 +25,32 @@ python open3d_registeration/point2point_reg.py \
 --src-dir /home/osobky/Documents/Master/Data/V2X-Seq-SPD-Example/vehicle-side/velodyne_copy \
 --trgt-dir /home/osobky/Documents/Master/Data/V2X-Seq-SPD-Example/infrastructure-side/velodyne_copy \
 --output-dir XX
+
+<!-- V2X_seq_hplaptop -->
+
+python open3d_registeration/point2point_reg.py \
+--src-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/V2X-Seq-SPD-Example/vehicle-side/velodyne_copy \
+--trgt-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/V2X-Seq-SPD-Example/infrastructure-side/velodyne_copy \
+--output-dir XX
+
+
+<!-- transformed_data_hplaptop -->
+
+python open3d_registeration/point2point_reg.py \
+--src-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/transformed \
+--trgt-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/transformed \
+--output-dir XX
+
+<!-- original_data_hplaptop -->
+
+python open3d_registeration/point2point_reg.py \
+--src-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/matched \
+--trgt-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/matched \
+--output-dir XX
+
+<!-- cleaned_original_data_hplaptop -->
+
+python open3d_registeration/point2point_reg.py \
+--src-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/clean \
+--trgt-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/clean \
+--output-dir XX
