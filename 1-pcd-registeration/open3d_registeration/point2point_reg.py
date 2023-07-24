@@ -3,6 +3,8 @@ import os
 
 import numpy as np
 import open3d as o3d
+import pandas as pd
+import matplotlib.pyplot as plt
 
 from utils import (draw_registration_result, execute_global_registration,
                    prepare_dataset, clean_save_pcd, matrix_to_kitti_format, initial_tf_from_gps)
@@ -19,6 +21,13 @@ def point2point_reg(src_dir, trgt_dir, gps_dir, imu_dir, voxel_size, vis=False):
         trgt_dir {str} -- Path to target point clouds directory
         voxel_size {float} -- voxel size for downsampling
     """
+
+    # Initialize lists to store data
+    timestamps = []
+    num_correspondences = []
+    fitnesses = []
+    inlier_rmse = []
+
     trans_init_dir = os.path.join(src_dir, "../o3d_veh_infra_global_reg_transf/")
     
     for src_pcd_filename, trgt_pcd_filename, gps_filename, imu_filename in zip(
@@ -30,7 +39,8 @@ def point2point_reg(src_dir, trgt_dir, gps_dir, imu_dir, voxel_size, vis=False):
         print("src pcd filename: ", src_pcd_filename)
         print("trgt pcd filename: ", trgt_pcd_filename)
         # print("trans init filename: ", trans_init_filename)
-       
+        print("gps filename: ", gps_filename)
+        print("imu filename: ", imu_filename)
         threshold = 0.02
         # source = o3d.io.read_point_cloud(os.path.join(src_dir,src_pcd_filename))
         # target = o3d.io.read_point_cloud(os.path.join(trgt_dir,trgt_pcd_filename))
@@ -48,7 +58,7 @@ def point2point_reg(src_dir, trgt_dir, gps_dir, imu_dir, voxel_size, vis=False):
                                 target, 
                                 trans_init)
 
-        print("Apply point-to-point ICP")
+        print("Apply Point2Point ICP")
         reg_p2p = o3d.pipelines.registration.registration_icp(
             source, target, threshold, trans_init,
             o3d.pipelines.registration.TransformationEstimationPointToPoint())
@@ -65,6 +75,41 @@ def point2point_reg(src_dir, trgt_dir, gps_dir, imu_dir, voxel_size, vis=False):
 
         # if vis:
         #     draw_registration_result(source, target, reg_p2p.transformation)
+
+        # Store the number of correspondences, fitness, and inlier_rmse
+        timestamp = os.path.splitext(src_pcd_filename)[0]
+        timestamps.append(timestamp)
+        num_correspondences.append(np.asarray(reg_p2p.correspondence_set).shape[0])
+        # print(f"Number of correspondences: {np.asarray(reg_p2p.correspondence_set).shape[0]}")
+        fitnesses.append(reg_p2p.fitness)
+        inlier_rmse.append(reg_p2p.inlier_rmse)
+    
+    # Save to a DataFrame and then to a CSV file
+    data = pd.DataFrame({
+        'timestamp': timestamps,
+        'num_correspondences': num_correspondences,
+        'fitness': fitnesses,
+        'inlier_rmse': inlier_rmse
+    })
+    data.to_csv('icp_data.csv', index=False)
+
+    # Plotting
+    fig, axs = plt.subplots(3)
+    fig.suptitle('Point2Point ICP Registration Metrics Over Time')
+
+    axs[0].plot(data['timestamp'], data['num_correspondences'], 'tab:orange')
+    axs[0].set(xlabel='timestamp', ylabel='Number of Correspondences')
+
+    axs[1].plot(data['timestamp'], data['fitness'], 'tab:green')
+    axs[1].set(xlabel='timestamp', ylabel='Fitness')
+
+    axs[2].plot(data['timestamp'], data['inlier_rmse'], 'tab:red')
+    axs[2].set(xlabel='timestamp', ylabel='Inlier RMSE')
+
+    for ax in axs.flat:
+        ax.label_outer()
+
+    plt.show()
         
 
 def global_reg(src_dir, trgt_dir, voxel_size):
@@ -112,4 +157,4 @@ if __name__ == '__main__':
     point2point_reg(args.src_dir, args.trgt_dir, 
                     "/mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/03_gps/04_gps_position_drive/json/matched/" , 
                     "/mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/04_imu/04_imu_rotations_drive/json/matched/", 
-                    voxel_size, vis=True)
+                    voxel_size, vis=False)
