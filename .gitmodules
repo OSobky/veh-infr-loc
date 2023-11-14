@@ -1,0 +1,3 @@
+[submodule "kiss-icp"]
+    path = kiss-icp
+    url = git@github.com:OSobky/kiss-icp.git
