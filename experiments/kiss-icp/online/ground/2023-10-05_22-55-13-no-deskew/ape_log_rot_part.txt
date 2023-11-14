@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_22-55-13/matched_poses_kitti.txt
+--------------------------------------------------------------------------------
+Compared 492 absolute pose pairs.
+Calculating APE for rotation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. rotation part (unit-less)
+(not aligned)
+
+       max	0.116782
+      mean	0.018889
+    median	0.009873
+       min	0.000745
+      rmse	0.029647
+       sse	0.432435
+       std	0.022850
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_22-55-13/ape_plot_rot_part_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_22-55-13/ape_plot_rot_part_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_22-55-13/absolute_pose_error_rot_part.zip...

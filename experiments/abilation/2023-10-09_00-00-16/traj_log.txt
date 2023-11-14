@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------
+name:	transformed_cleaned_dir_poses_kitti_fixed_gt
+infos:	492 poses, 148.600m path length
+--------------------------------------------------------------------------------
+name:	fixed_gt
+infos:	492 poses, 148.054m path length
+--------------------------------------------------------------------------------
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/2023-10-09_00-00-16/traj_plot_trajectories.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/2023-10-09_00-00-16/traj_plot_xyz_view.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/2023-10-09_00-00-16/traj_plot_rpy_view.png

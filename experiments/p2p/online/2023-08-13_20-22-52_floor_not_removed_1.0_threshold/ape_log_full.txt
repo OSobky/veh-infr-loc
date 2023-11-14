@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_20-22-52_floor_not_removed_1.0_threshold/estimated_tf_kitti.txt
+--------------------------------------------------------------------------------
+Compared 492 absolute pose pairs.
+Calculating APE for full transformation pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. full transformation (unit-less)
+(not aligned)
+
+       max	7.136986
+      mean	0.856095
+    median	0.349843
+       min	0.099272
+      rmse	1.478265
+       sse	1075.151581
+       std	1.205142
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_20-22-52_floor_not_removed_1.0_threshold/ape_plot_full_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_20-22-52_floor_not_removed_1.0_threshold/ape_plot_full_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_20-22-52_floor_not_removed_1.0_threshold/absolute_pose_error_full.zip...

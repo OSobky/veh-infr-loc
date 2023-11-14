@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------
+name:	estimated_tf_kitti
+infos:	492 poses, 377.752m path length
+--------------------------------------------------------------------------------
+name:	fixed_gt
+infos:	492 poses, 148.054m path length
+--------------------------------------------------------------------------------
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_19-23-46_floor_removed_4.0_threshold/traj_plot_trajectories.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_19-23-46_floor_removed_4.0_threshold/traj_plot_xyz_view.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_19-23-46_floor_removed_4.0_threshold/traj_plot_rpy_view.png

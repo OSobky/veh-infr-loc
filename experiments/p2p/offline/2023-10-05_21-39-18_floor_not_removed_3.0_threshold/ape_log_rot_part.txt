@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/offline/2023-10-05_21-39-18_floor_not_removed_3.0_threshold/estimated_tf_kitti.txt
+--------------------------------------------------------------------------------
+Compared 492 absolute pose pairs.
+Calculating APE for rotation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. rotation part (unit-less)
+(not aligned)
+
+       max	0.105636
+      mean	0.023706
+    median	0.019579
+       min	0.002918
+      rmse	0.028155
+       sse	0.390021
+       std	0.015191
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/offline/2023-10-05_21-39-18_floor_not_removed_3.0_threshold/ape_plot_rot_part_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/offline/2023-10-05_21-39-18_floor_not_removed_3.0_threshold/ape_plot_rot_part_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/offline/2023-10-05_21-39-18_floor_not_removed_3.0_threshold/absolute_pose_error_rot_part.zip...

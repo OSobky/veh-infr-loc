@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------
+name:	pose_b_lo_mulls_fixed_gt
+infos:	492 poses, 146.960m path length
+--------------------------------------------------------------------------------
+name:	fixed_gt
+infos:	492 poses, 148.054m path length
+--------------------------------------------------------------------------------
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/traj_plot_trajectories.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/traj_plot_xyz_view.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/traj_plot_rpy_view.png

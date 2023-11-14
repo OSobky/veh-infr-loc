@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------------
+name:	matched_poses_kitti
+infos:	492 poses, 297.980m path length
+--------------------------------------------------------------------------------
+name:	fixed_gt
+infos:	492 poses, 148.054m path length
+--------------------------------------------------------------------------------
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_23-44-22/traj_plot_trajectories.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_23-44-22/traj_plot_xyz_view.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/2023-10-05_23-44-22/traj_plot_rpy_view.png

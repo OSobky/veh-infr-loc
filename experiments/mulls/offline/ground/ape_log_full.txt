@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/pose_b_lo_mulls_fixed_gt.txt
+--------------------------------------------------------------------------------
+Aligning using Umeyama's method...
+Rotation of alignment:
+[[ 0.99115064  0.07831267  0.10717995]
+ [ 0.08552261  0.2407814  -0.96680412]
+ [-0.10151995  0.96741483  0.23195313]]
+Translation of alignment:
+[-0.4063431   1.03630604 -2.75611367]
+Scale correction: 1.0
+--------------------------------------------------------------------------------
+Compared 492 absolute pose pairs.
+Calculating APE for full transformation pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. full transformation (unit-less)
+(with SE(3) Umeyama alignment)
+
+       max	2.194242
+      mean	1.803534
+    median	1.792950
+       min	1.770594
+      rmse	1.804097
+       sse	1601.344536
+       std	0.045069
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/ape_plot_full_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/ape_plot_full_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground/absolute_pose_error_full.zip...

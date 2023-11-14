@@ -1,5 +1,7 @@
 import copy
 import os
+from datetime import datetime
+from time import sleep
 import numpy as np
 import open3d as o3d
 
@@ -9,17 +11,55 @@ import utm
 from scipy.spatial.transform import Rotation as R
 
 
-def draw_registration_result(source, target, transformation):
+def draw_registration_result(source, target, transformation, exp_path ,index):
     source_temp = copy.deepcopy(source)
     target_temp = copy.deepcopy(target)
     source_temp.paint_uniform_color([1, 0.706, 0])
     target_temp.paint_uniform_color([0, 0.651, 0.929])
     source_temp.transform(transformation)
-    o3d.visualization.draw_geometries([source_temp, target_temp],
-                                      zoom=0.4459,
-                                      front=[0.9288, -0.2951, -0.2242],
-                                      lookat=[1.6784, 2.0612, 1.4451],
-                                      up=[-0.3402, -0.9189, -0.1996])
+    # o3d.visualization.draw_geometries([source_temp, target_temp],
+    #                                   zoom=0.4459,
+    #                                   front=[0.9288, -0.2951, -0.2242],
+    #                                   lookat=[1.6784, 2.0612, 1.4451],
+    #                                   up=[-0.3402, -0.9189, -0.1996])
+
+    vis = o3d.visualization.Visualizer()
+    vis.create_window(window_name='Infa-Veh-Reg Timestamp: {}'.format(index), width=1920, height=1080)
+    ctr = vis.get_view_control()
+    rndr = vis.get_render_option()
+    param = o3d.io.read_pinhole_camera_parameters("viewpoint.json")
+
+    for geometry in [source_temp, target_temp]:
+        vis.add_geometry(geometry)
+
+    ctr.convert_from_pinhole_camera_parameters(param, allow_arbitrary=True)
+    rndr.load_from_json("RenderOption.json")
+
+    # Run the visualizer
+    # vis.run()
+    vis.capture_screen_image(os.path.join(exp_path, f"viewpoint_{index}.png"), True)  # Optional, to save a screenshot  
+    vis.destroy_window()
+
+def save_draw_registration_result(source, target, transformation, exp_path ,index):
+    source_temp = copy.deepcopy(source)
+    target_temp = copy.deepcopy(target)
+    source_temp.paint_uniform_color([1, 0.706, 0])
+    target_temp.paint_uniform_color([0, 0.651, 0.929])
+    source_temp.transform(transformation)
+
+    vis = o3d.visualization.Visualizer()
+    vis.create_window(window_name='Infa-Veh-Reg Timestamp: {}'.format(index), width=1920, height=1080)
+    for geometry in [source_temp, target_temp]:
+        vis.add_geometry(geometry)
+    
+    # Run the visualizer
+    vis.run()
+    param = vis.get_view_control().convert_to_pinhole_camera_parameters()
+    o3d.io.write_pinhole_camera_parameters("viewpoint.json", param)    
+    vis.destroy_window()
+
+
+
 # For Global registeration
 def preprocess_point_cloud(pcd, voxel_size):
     print(":: Downsample with a voxel size %.3f." % voxel_size)
@@ -243,9 +283,32 @@ def initial_tf_from_gps(gps_path, imu_path):
     # print("transformation matrix: vehicle_lidar to s110_lidar_ouster_south with blender matrix")
     # print(repr(transformation_matrix))
 
-    return transformation_matrix
+    # Add the transformation matrix from RTK to Robosense
+    transformation_matrix_rtk_to_robosense = get_initial_transformation_matrix_rtk_robosense()
 
+    return transformation_matrix @ transformation_matrix_rtk_to_robosense
 
+def get_initial_transformation_matrix_rtk_robosense():
+    gps_lat_robosense = 11.6234528153807
+    gps_long_robosense = 48.2509788374431
+    gps_alt_robosense = 529.956770454546
+    utm_east_robosense_initial, utm_north_robosense_initial, zone, _ = utm.from_latlon(gps_lat_robosense,
+                                                                                       gps_long_robosense)
+    gps_lat_rtk = 11.6234612182321
+    gps_long_rtk = 48.250977342
+    gps_alt_rtk = 529.820779761905
+    utm_east_rtk_initial, utm_north_rtk_initial, zone, _ = utm.from_latlon(gps_lat_rtk, gps_long_rtk)
+    translation_rtk_to_robosense_initial = np.array(
+        [utm_east_robosense_initial - utm_east_rtk_initial,
+         utm_north_robosense_initial - utm_north_rtk_initial,
+         gps_alt_rtk - gps_alt_robosense], dtype=float)
+    transformation_matrix_rtk_to_robosense = np.zeros((4, 4))
+    transformation_matrix_rtk_to_robosense[0:3, 0:3] = np.identity(3)
+    transformation_matrix_rtk_to_robosense[0:3, 3] = translation_rtk_to_robosense_initial
+    transformation_matrix_rtk_to_robosense[3, 3] = 1.0
+    # print("transformation matrix rtk to robosense:")
+    # print(repr(transformation_matrix_rtk_to_robosense))
+    return transformation_matrix_rtk_to_robosense
 
 def matrix_to_kitti_format(matrix):
     """
@@ -262,17 +325,102 @@ def matrix_to_kitti_format(matrix):
     
     return kitti_format
 
-# Example usage:
 
-# Create a 4x4 transformation matrix
-transformation_matrix = np.eye(4)
-
-# Convert to KITTI format
-kitti_format = matrix_to_kitti_format(transformation_matrix)
-
-print(kitti_format)
+def calculate_rmse(gt, pred):
+    return np.sqrt(np.mean((gt - pred) ** 2))
 
 
+def evo(gt_path, est_path):
+    from evo.core import metrics
+    from evo.tools import plot
+    from evo.tools import file_interface
+    from evo.core import sync
+
+    # Load trajectories from files (in TUM, KITTI, EuRoC, ROS bag, ... format)
+    traj_ref = file_interface.read_kitti_poses_file(gt_path)
+    traj_est = file_interface.read_kitti_poses_file(est_path)
+
+    # Synchronize the trajectories (if they're not aligned)
+    traj_ref, traj_est = sync.associate_trajectories(traj_ref, traj_est)
+
+    # Calculate APE
+    ape_metric = metrics.APE(metrics.PoseRelation.translation_part)
+    ape_metric.process_data((traj_ref, traj_est))
+    ape_stats = ape_metric.get_statistic(metrics.StatisticsType.rmse)
+    print('APE:', ape_stats)
+
+    # Calculate RPE
+    rpe_metric = metrics.RPE(metrics.PoseRelation.translation_part, delta=1.0, delta_unit=metrics.Unit.frames)
+    rpe_metric.process_data((traj_ref, traj_est))
+    rpe_stats = rpe_metric.get_statistic(metrics.StatisticsType.rmse)
+    print('RPE:', rpe_stats)
+
+    # Plotting the result (optional)
+    plot_mode = metrics.PlotMode.xy
+    plot_collection = plot.PlotCollection("Example")
+    # Trajectories plot
+    plot_collection.add_figure().add_plot(metrics.PlotTrajectories([traj_ref, traj_est], plot_mode))
+    # APE and RPE plots
+    plot_collection.add_figure().add_plot(metrics.PlotMetric(ape_metric, plot_mode))
+    plot_collection.add_figure().add_plot(metrics.PlotMetric(rpe_metric, plot_mode))
+    plot_collection.show()
+
+def extract_iterations(log_output):
+    lines = log_output.strip().split("\n")
+    for line in reversed(lines):
+        if "ICP Iteration" in line:
+            iteration_number = int(line.split("#")[1].split(":")[0])
+            return iteration_number + 1
+    return 0
+
+def create_experiment_folder(parent_dir, exp_name):
+    # Get the current timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    # Create a path to the new folder inside the "experiments" directory
+    path = os.path.join(parent_dir, timestamp + "_" + exp_name)
+
+    # Create the experiment folder
+    os.mkdir(path)
+
+    # Return the path to the new folder
+    return path
+
+
+def set_view_parameters(vis, params_json_path):
+
+    # Read the JSON file
+    with open(params_json_path, 'r') as file:
+        params_json = json.load(file)
+
+    # Extract the first trajectory object
+    trajectory = params_json['trajectory'][0]
+
+    # Retrieve the view control object
+    view_control = vis.get_view_control()
+
+    # Set the parameters based on the JSON object
+    if 'zoom' in trajectory:
+        view_control.set_zoom(trajectory['zoom'])
+    if 'front' in trajectory:
+        view_control.set_front(np.array(trajectory['front']))
+    if 'lookat' in trajectory:
+        view_control.set_lookat(np.array(trajectory['lookat']))
+    if 'up' in trajectory:
+        view_control.set_up(np.array(trajectory['up']))
+    if 'field_of_view' in trajectory:
+        current_fov = view_control.get_field_of_view()
+        delta_fov = trajectory['field_of_view'] - current_fov
+        view_control.change_field_of_view(delta_fov)
+
+
+
+def remove_ground(point_cloud, ground_height=0):
+    column = np.asarray(point_cloud.points)[:,2]
+    filtered_frame = np.asarray(point_cloud.points)[column > ground_height]
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(filtered_frame)
+    return pcd
 
 """
 

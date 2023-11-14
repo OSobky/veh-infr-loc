@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_21-07-47_floor_not_removed_5.0_threshold/estimated_tf_kitti.txt
+--------------------------------------------------------------------------------
+Found 491 pairs with delta 1 (frames) among 492 poses using consecutive pairs.
+Compared 491 relative pose pairs, delta = 1 (frames) with consecutive pairs.
+Calculating RPE for rotation part pose relation...
+--------------------------------------------------------------------------------
+RPE w.r.t. rotation part (unit-less)
+for delta = 1 (frames) using consecutive pairs
+(not aligned)
+
+       max	0.198566
+      mean	0.012431
+    median	0.009389
+       min	0.000745
+      rmse	0.019993
+       sse	0.196261
+       std	0.015659
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_21-07-47_floor_not_removed_5.0_threshold/rpe_plot_rot_part_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_21-07-47_floor_not_removed_5.0_threshold/rpe_plot_rot_part_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online/2023-08-13_21-07-47_floor_not_removed_5.0_threshold/relative_pose_error_rot_part.zip...

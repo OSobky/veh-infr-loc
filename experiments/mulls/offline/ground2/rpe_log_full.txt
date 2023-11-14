@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground2/pose_b_lo_mulls_fixed_gt.txt
+--------------------------------------------------------------------------------
+Found 491 pairs with delta 1 (frames) among 492 poses using consecutive pairs.
+Compared 491 relative pose pairs, delta = 1 (frames) with consecutive pairs.
+Calculating RPE for full transformation pose relation...
+--------------------------------------------------------------------------------
+RPE w.r.t. full transformation (unit-less)
+for delta = 1 (frames) using consecutive pairs
+(not aligned)
+
+       max	0.720026
+      mean	0.051380
+    median	0.026409
+       min	0.001581
+      rmse	0.101956
+       sse	5.103932
+       std	0.088063
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground2/rpe_plot_full_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground2/rpe_plot_full_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/mulls/offline/ground2/relative_pose_error_full.zip...

@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/no-initial-tf/2023-11-14_02-28-13/matched_poses_kitti.txt
+--------------------------------------------------------------------------------
+Found 491 pairs with delta 1 (frames) among 492 poses using consecutive pairs.
+Compared 491 relative pose pairs, delta = 1 (frames) with consecutive pairs.
+Calculating RPE for rotation part pose relation...
+--------------------------------------------------------------------------------
+RPE w.r.t. rotation part (unit-less)
+for delta = 1 (frames) using consecutive pairs
+(not aligned)
+
+       max	2.828427
+      mean	1.031227
+    median	0.156930
+       min	0.001045
+      rmse	1.528806
+       sse	1147.587990
+       std	1.128635
+
+--------------------------------------------------------------------------------
+Plotting results... 
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/no-initial-tf/2023-11-14_02-28-13/rpe_plot_rot_part_raw.png
+Plot saved to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/no-initial-tf/2023-11-14_02-28-13/rpe_plot_rot_part_map.png
+--------------------------------------------------------------------------------
+Saving results to /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/abilation/no-initial-tf/2023-11-14_02-28-13/relative_pose_error_rot_part.zip...

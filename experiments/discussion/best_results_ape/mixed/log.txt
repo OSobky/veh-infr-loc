@@ -1,0 +1,22 @@
+
+APE w.r.t. full transformation (unit-less)
+(not aligned)
+
+
+                     rmse      mean    median       std       min        max  \
+kiss-offline-nd  1.801352  0.840895  0.286933  1.593037  0.019893  10.405084   
+kiss-online-nd   1.947088  0.895133  0.286953   1.72913  0.017905   10.32274   
+p2p-offline-3    2.769716  2.085219  1.957411  1.822962   0.24858  12.561034   
+p2p-online-3     2.403136  1.692923   1.46224  1.705601  0.144116  11.339307   
+
+                         sse  
+kiss-offline-nd  1596.475615  
+kiss-online-nd   1865.247231  
+p2p-offline-3    3774.293682  
+p2p-online-3     2841.330493  
+
+Plot saved to ./absolute_full_raw.png
+Plot saved to ./absolute_full_stats.png
+Plot saved to ./absolute_full_histogram.png
+Plot saved to ./absolute_full_box_plot.png
+Plot saved to ./absolute_full_violin_histogram.png

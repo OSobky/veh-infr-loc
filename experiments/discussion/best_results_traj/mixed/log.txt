@@ -1,0 +1,45 @@
+--------------------------------------------------------------------------------
+Loaded 492 poses from: kiss-offline-nd.txt
+Loaded 492 poses from: kiss-online-nd.txt
+Loaded 492 poses from: p2p-offline-3.txt
+Loaded 492 poses from: p2p-online-3.txt
+Loaded 492 poses from: /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt
+--------------------------------------------------------------------------------
+name:	kiss-offline-nd
+infos:
+	nr. of poses	492
+	path length (m)	214.71013291078958
+	pos_end (m)	[-15.79627077   4.08187823  -6.89406735]
+	pos_start (m)	[129.87135306  12.4222906   -3.14940152]
+--------------------------------------------------------------------------------
+name:	kiss-online-nd
+infos:
+	nr. of poses	492
+	path length (m)	280.7387467220062
+	pos_end (m)	[-15.48212313   6.24920009  -7.02834391]
+	pos_start (m)	[130.01338764  13.41833449  -2.33733509]
+--------------------------------------------------------------------------------
+name:	p2p-offline-3
+infos:
+	nr. of poses	492
+	path length (m)	215.3611502520247
+	pos_end (m)	[-16.36764542   4.87589224  -6.64466317]
+	pos_start (m)	[130.26126437   8.87409426  -1.42074426]
+--------------------------------------------------------------------------------
+name:	p2p-online-3
+infos:
+	nr. of poses	492
+	path length (m)	409.03682267738105
+	pos_end (m)	[-17.09299704   4.25568739  -6.30281537]
+	pos_start (m)	[130.61741943   9.1656626   -1.04220301]
+--------------------------------------------------------------------------------
+name:	fixed_gt
+infos:
+	nr. of poses	492
+	path length (m)	148.05436270837248
+	pos_end (m)	[-15.94319241   4.20244714  -6.72701244]
+	pos_start (m)	[127.78322541  19.33703269  -2.29119079]
+--------------------------------------------------------------------------------
+Plot saved to ./traj_trajectories.png
+Plot saved to ./traj_xyz_view.png
+Plot saved to ./traj_rpy_view.png

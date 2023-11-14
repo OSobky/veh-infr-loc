@@ -1,0 +1,3 @@
+evo_res --no_warnings --use_filenames  --save_plot ./absolute_full.png *  > ./log.txt 2>&1
+
+evo_traj kitti --no_warnings -v --plot_mode xy --save_plot ./traj.png --ref /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/fixed_gt.txt  * > ./log.txt 2>&1
