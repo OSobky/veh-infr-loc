@@ -1,4 +1,4 @@
-# Vehilce-Infrastrucutre Localization
+# Vehicle-Infrastrucutre Localization
 
 ## Description
 This repository hosts the implementation of two LiDAR odometry algorithms: Classical Point-to-Point ICP (Iterative Closest Point) and Modified KISS-ICP (Keep It Small and Simple ICP). It also includes comprehensive experiment scripts and data to evaluate and compare these algorithms in the context of vehicle-infrastructure localization.
