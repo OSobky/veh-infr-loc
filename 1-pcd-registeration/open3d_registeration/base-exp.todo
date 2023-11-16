@@ -1,9 +1,0 @@
-Base Experminet:
-    ✔ Fix TUM data @started(23-07-16 18:28) @done(23-07-16 18:28) @lasted(47s)
-    ✔ Save the Cleaned data to be used right away @done(23-07-18 20:29)
-    ✔ Create intial transformation matrix from GPS & IMU data @done(23-07-20 16:50)
-    ☐ Modify the Pipeline @started(23-07-20 16:50)
-        ✔ to use intial TF matrix from the GPS @started(23-07-20 16:50) @done(23-07-20 16:50) @lasted(44s)
-        - to extract the results in KITTI Format
-    ☐ Run the pipeline
-    ☐ Create diagrams for errors with respect to the overlapping
