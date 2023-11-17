@@ -1,4 +1,5 @@
 classical-p2p-icp/experiments/*
+1-pcd-registeration/experiments/*
 *.todo
 viz-pcd.py
 presentation_results/*
