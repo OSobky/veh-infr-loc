@@ -11,12 +11,32 @@ This repository hosts the implementation of two LiDAR odometry algorithms: Class
 - `/resources`: Contains resources like images, additional documentation.
 
 ## Getting Started
+
+### Prerequisites
+- [Conda](https://docs.conda.io/en/latest/) (recommended)
+
+
+### Cloning the Repository
 To clone this repository and its submodules, use the following command:
 
 ```bash
 git clone --recurse-submodules https://github.com/OSobky/veh-infr-loc.git
 ```
 
+### Dependencies by Conda
+Create conda environment from `environment.yml` file:
+
+```bash
+conda env create -f environment.yml
+```
+
+Activate the environment:
+
+```bash 
+conda activate o3d
+```
+
+### Running the Algorithms
 Follow the instructions in each algorithm's `README.md` for detailed setup and usage guidelines.
 
 ## Experiments
