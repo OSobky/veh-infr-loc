@@ -11,6 +11,40 @@ import utm
 from scipy.spatial.transform import Rotation as R
 
 
+def create_visualizer():
+    vis = o3d.visualization.Visualizer()
+    vis.create_window(window_name='Infa-Veh-Reg Timestamp: ', width=1920, height=1080)
+    ctr = vis.get_view_control()
+    rndr = vis.get_render_option()
+    param = o3d.io.read_pinhole_camera_parameters("viewpoint.json")
+    ctr.convert_from_pinhole_camera_parameters(param, allow_arbitrary=True)
+    rndr.load_from_json("RenderOption.json")
+
+    return vis
+
+def stream_registeration_results(source, target, transformation, exp_path ,index, vis):
+    source_temp = copy.deepcopy(source)
+    target_temp = copy.deepcopy(target)
+    source_temp.paint_uniform_color([1, 0.706, 0])
+    target_temp.paint_uniform_color([0, 0.651, 0.929])
+    source_temp.transform(transformation)
+    # o3d.visualization.draw_geometries([source_temp, target_temp],
+    #                                   zoom=0.4459,
+    #                                   front=[0.9288, -0.2951, -0.2242],
+    #                                   lookat=[1.6784, 2.0612, 1.4451],
+    #                                   up=[-0.3402, -0.9189, -0.1996])
+
+   
+
+    # Update the visualizer
+    vis.clear_geometries()
+    vis.add_geometry(source_temp)
+    vis.add_geometry(target_temp)
+    vis.poll_events()
+    vis.update_renderer()
+    
+
+
 def draw_registration_result(source, target, transformation, exp_path ,index):
     source_temp = copy.deepcopy(source)
     target_temp = copy.deepcopy(target)

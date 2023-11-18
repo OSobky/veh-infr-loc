@@ -12,10 +12,10 @@ import sys
 
 from utils import (draw_registration_result, execute_global_registration, extract_iterations,
                    prepare_dataset, matrix_to_kitti_format, initial_tf_from_gps, calculate_rmse, 
-                   create_experiment_folder, save_draw_registration_result, remove_ground)
+                   create_experiment_folder, save_draw_registration_result, remove_ground, create_visualizer, stream_registeration_results)
 
 
-def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_size, threshold = 3.0 , remove_floor=True, vis=False, exp_name="", parent_dir="/mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online"):
+def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_size, threshold = 3.0 , remove_floor=True, vis=False, stream=False, exp_name="", parent_dir="/mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/p2p/online"):
     """Point to point registeration using ICP
     Ref: http://www.open3d.org/docs/release/tutorial/pipelines/icp_registration.html
     
@@ -26,6 +26,11 @@ def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_s
         trgt_dir {str} -- Path to target point clouds directory
         voxel_size {float} -- voxel size for downsampling
     """
+
+    # Check if to stream point clouds or not
+    if stream:
+        # Create a visualizer object
+        visualizer = create_visualizer()
 
     # Initialize lists to store data
     timestamps = []
@@ -123,6 +128,9 @@ def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_s
         ground_truth = np.identity(4)
 
         if i > 0 and i < 493 :
+            # stream point clouds
+            if stream:
+                stream_registeration_results(source, target, reg_p2p.transformation, exp_path, i, visualizer)
             # Assuming you want to read the i pose, change index 
             ground_truth = np.array(gt_list[i-1].split(), dtype=float)
             ground_truth = np.reshape(ground_truth, (3, 4))
@@ -157,7 +165,9 @@ def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_s
         rotation_rmses.append(rotation_rmse)
 
 
-        
+    # distroy the visualizer object
+    if stream:
+        visualizer.destroy_window()
     
     # Save to a DataFrame and then to a CSV file
     data = pd.DataFrame({
@@ -456,6 +466,7 @@ if __name__ == '__main__':
                             threshold,
                             remove_floor=False,
                             vis=False,
+                            stream=False,
                             exp_name=f"floor_not_removed_{threshold}_threshold")
 
     # evo("/mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/veh-infra-gt.txt",
