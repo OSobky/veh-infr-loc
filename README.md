@@ -36,6 +36,38 @@ Activate the environment:
 conda activate o3d
 ```
 
+### Data 
+
+For Vehicle-Infrastructure Localization we need to two sources of data:
+- Vehilce point clouds
+- Infrastrucutre point clouds
+
+Plus: 
+- GPS and IMU data from Vehilce points clouds
+- Ground turth for transformation matrix between vehicle and infrastrucutre for evaluation purposes 
+
+#### in this master thesis we used Scene one from a recorded data using roadside infrastructure in Munich. To access this data please contact [Walter Zimmer](walter.zimmer@tum.de)
+
+#### Folder Structure 
+
+As mentioned before for this thesis, we used scene one from recorded data. here is the folder structure for the recorded data: 
+
+```
+Data/
+└── 01_scene_01_omar/
+    ├── 01_lidar/
+    │   ├── 01_vehicle_lidar_robosense/
+    │   │   └── vehicle_lidar_robosense_driving_direction_east/s110_first_east/matched/
+    │   └── 02_infrastructure_lidar_ouster/
+    │       └── s110_lidar_ouster_south_driving_direction_east/matched/
+    ├── 03_gps/
+    │   └── 04_gps_position_drive/json
+    ├── 04_imu/
+    │   └── 04_imu_rotations_drive/json/matched
+    └── tf_matrix/
+        └── kitti/fixed_gt.txt
+```
+
 ### Running the Algorithms
 Follow the instructions in each algorithm's `README.md` for detailed setup and usage guidelines.
 
