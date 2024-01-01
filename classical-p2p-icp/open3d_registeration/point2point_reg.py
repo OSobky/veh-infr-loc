@@ -118,11 +118,11 @@ def point2point_online_reg(src_dir, trgt_dir, gps_dir, imu_dir, gt_path, voxel_s
         # turn off the debug mode
         o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Info)
 
-        
-        if vis or i in selected_frames:
-            draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
-            # save_draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
-            # load_draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
+        if not stream:
+            if vis or i in selected_frames:
+                draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
+                # save_draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
+                # load_draw_registration_result(source, target, reg_p2p.transformation, exp_path, i)
 
         
         ground_truth = np.identity(4)
@@ -443,7 +443,7 @@ if __name__ == '__main__':
 
     #  Loop over thershoulds
     # for threshold in [1.0, 2.0, 3.0, 4.0, 5.0]:
-    for threshold in [1.0, 2.0, 3.0, 4.0, 5.0]:
+    for threshold in [3.0]:
         # Run ICP
         voxel_size = 0.05
         # o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Debug)
@@ -466,7 +466,7 @@ if __name__ == '__main__':
                             threshold,
                             remove_floor=False,
                             vis=False,
-                            stream=False,
+                            stream=True,
                             exp_name=f"floor_not_removed_{threshold}_threshold")
 
     # evo("/mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/tf_matrix/kitti/veh-infra-gt.txt",

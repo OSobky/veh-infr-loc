@@ -1,0 +1,14 @@
+adaptive_threshold:
+  fixed_threshold: null
+  initial_threshold: 2.0
+  min_motion_th: 0.1
+data:
+  correct_scan: true
+  deskew: false
+  max_range: 150.0
+  min_range: 5.0
+  preprocess: true
+mapping:
+  max_points_per_voxel: 20
+  voxel_size: 1.5
+out_dir: /mnt/c/Users/elsobkyo/Documents/masters-thesis/veh-infr-loc/experiments/kiss-icp/online/ground/

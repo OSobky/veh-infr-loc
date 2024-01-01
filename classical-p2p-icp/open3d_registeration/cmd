@@ -45,7 +45,7 @@ python open3d_registeration/point2point_reg.py \
 
 python open3d_registeration/point2point_reg.py \
 --src-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/01_vehicle_lidar_robosense/vehicle_lidar_robosense_driving_direction_east/s110_first_east/matched \
---trgt-dir /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/matched \
+--trgt /mnt/c/Users/elsobkyo/Documents/masters-thesis/Data/01_scene_01_omar/01_lidar/02_infrastructure_lidar_ouster/s110_lidar_ouster_south_driving_direction_east/matched \
 --output-dir XX
 
 <!-- cleaned_original_data_hplaptop -->
