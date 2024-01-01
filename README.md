@@ -66,6 +66,7 @@ Data/
     │   └── 04_imu_rotations_drive/json/matched
     └── tf_matrix/
         └── kitti/fixed_gt.txt
+    
 ```
 
 ### Running the Algorithms
